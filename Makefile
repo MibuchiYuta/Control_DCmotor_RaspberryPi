@@ -1,6 +1,6 @@
-obj-m :=myled.o
+obj-m :=mini4wd.o
 
-myled.ko: myled.c
+mini4wd.ko: mini4wd.c
 	make -C /usr/src/linux-headers-`uname -r` M=`pwd` V=1 modules
 
 clean:
