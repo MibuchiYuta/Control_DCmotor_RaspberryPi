@@ -1,5 +1,5 @@
 #include <linux/module.h>
-MODULE_AUTHOR("MibuchiYuta");
+MODULE_AUTHOR("Mibuchi Yuta and Ryuichi Ueda");
 MODULE_DESCRIPTION("driver for full color LED control");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("0.0.1");
