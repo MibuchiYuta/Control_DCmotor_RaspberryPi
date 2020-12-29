@@ -4,9 +4,10 @@
 #include <linux/device.h>
 #include <linux/uaccess.h>
 #include <linux/io.h>
+#include <linux/delay.h>
 
 MODULE_AUTHOR("Mibuchi Yuta and Ryuichi Ueda");
-MODULE_DESCRIPTION("driver for mini4wd control");
+MODULE_DESCRIPTION("driver for motor control");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("0.0.1");
 
@@ -18,13 +19,26 @@ static volatile u32 *gpio_base = NULL;
 static ssize_t motor_write(struct file* filp, const char* buf, size_t count, loff_t* pos)
 {
 	char c;
+	int m_sec = 3000;
 	if(copy_from_user(&c,buf,sizeof(char)))
 	return -EFAULT;
-	if(c == '0')
-		gpio_base[10] = 1 << 25;
-	else if(c == '1')
-		gpio_base[7] = 1 << 25;
 	
+	if(c == '1'){
+		printk ("go straight");
+		gpio_base[10] = 1 << 13;
+		gpio_base[7] = 1 << 12;
+		msleep(m_sec);
+		gpio_base[7] = 1 << 13;
+		}
+
+	else if(c == '2'){
+		printk ("go back");
+		gpio_base[10] = 1 << 12;
+		gpio_base[7] = 1 << 13;
+		msleep(m_sec);
+		gpio_base[7] = 1 << 12;
+		}
+
 	return 1;
 }
 
@@ -36,7 +50,7 @@ static struct file_operations motor_fops = {
 static int __init init_mod(void)
 {
 	int retval;
-	retval = alloc_chrdev_region(&dev, 0, 1, "mini4wd");
+	retval = alloc_chrdev_region(&dev, 0, 1, "motor");
 	if(retval < 0){
 		printk(KERN_ERR "alloc_chrdev_region failed.\n");
 		return retval;
@@ -49,12 +63,12 @@ static int __init init_mod(void)
                 printk(KERN_ERR "cdev_add failed. major:%d, minor:%d",MAJOR(dev),MINOR(dev));
                 return retval;
         }
-	cls = class_create(THIS_MODULE,"mini4wd");
+	cls = class_create(THIS_MODULE,"motor");
         if(IS_ERR(cls)){
                 printk(KERN_ERR "class_create failed.");
                 return PTR_ERR(cls);
 	}
-	device_create(cls, NULL, dev, NULL, "mini4wd%d",MINOR(dev));
+	device_create(cls, NULL, dev, NULL, "motor%d",MINOR(dev));
 
 	gpio_base = ioremap_nocache(0x3f200000, 0xA0);
 	
@@ -65,6 +79,7 @@ static int __init init_mod(void)
 	
 	gpio_base[index] = (gpio_base[index] & mask) | (0x1 << shift);
 	
+
 	return 0;
 }
 

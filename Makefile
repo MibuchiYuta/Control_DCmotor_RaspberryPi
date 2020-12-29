@@ -1,6 +1,6 @@
-obj-m :=mini4wd.o
+obj-m :=motor.o
 
-mini4wd.ko: mini4wd.c
+motor.ko: motor.c
 	make -C /usr/src/linux-headers-`uname -r` M=`pwd` V=1 modules
 
 clean:
