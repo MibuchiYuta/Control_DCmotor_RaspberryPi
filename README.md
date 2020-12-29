@@ -46,8 +46,13 @@ $ echo 1 > /dev/motor0
 ```sh
 $ echo a > /dev/motor0
 ```
-  
 ---
+
+### デバイスドライバのアンインストール
+
+```sh
+$ sudo rmmod motor
+  ```
   
 ## 動画  
   
