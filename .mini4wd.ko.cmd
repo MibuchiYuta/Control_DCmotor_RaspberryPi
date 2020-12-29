@@ -1,1 +1,0 @@
-cmd_/home/ubuntu/robosys_device_drivers/mini4wd.ko := ld -r  -EL  -maarch64elf  --build-id  -T ./scripts/module-common.lds -T ./arch/arm64/kernel/module.lds -o /home/ubuntu/robosys_device_drivers/mini4wd.ko /home/ubuntu/robosys_device_drivers/mini4wd.o /home/ubuntu/robosys_device_drivers/mini4wd.mod.o;  true
