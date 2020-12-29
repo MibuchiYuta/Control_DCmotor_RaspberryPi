@@ -16,29 +16,32 @@ static struct cdev cdv;
 static struct class *cls = NULL;
 static volatile u32 *gpio_base = NULL;
 
+int i;
+
 static ssize_t motor_write(struct file* filp, const char* buf, size_t count, loff_t* pos)
 {
 	char c;
-	int m_sec = 3000;
 	if(copy_from_user(&c,buf,sizeof(char)))
-	return -EFAULT;
-	
-	if(c == '1'){
-		printk ("go straight");
-		gpio_base[10] = 1 << 13;
-		gpio_base[7] = 1 << 12;
-		msleep(m_sec);
-		gpio_base[7] = 1 << 13;
-		}
+		return -EFAULT;
+	if(c != '\n'){	
+		if(c == '1'){
+			gpio_base[7] = 1 << 25;
+			gpio_base[10] = 1 << 24;
+			msleep(1000);
+			gpio_base[10]= 1 << 25;
+			}
 
-	else if(c == '2'){
-		printk ("go back");
-		gpio_base[10] = 1 << 12;
-		gpio_base[7] = 1 << 13;
-		msleep(m_sec);
-		gpio_base[7] = 1 << 12;
+		else if(c == '2'){
+			gpio_base[7] = 1 << 24;
+			gpio_base[10] = 1 << 25;
+			msleep(1000);
+			gpio_base[10]= 1 << 24;
+			}
+		else if(c == '0'){
+			gpio_base[10] = 1 << 24;
+			gpio_base[10] = 1 << 25;
 		}
-
+	}
 	return 1;
 }
 
@@ -71,14 +74,13 @@ static int __init init_mod(void)
 	device_create(cls, NULL, dev, NULL, "motor%d",MINOR(dev));
 
 	gpio_base = ioremap_nocache(0x3f200000, 0xA0);
-	
-	const u32 motor = 25;
-	const u32 index = motor/10;
-	const u32 shift = (motor%10)*3;
-	const u32 mask = ~(0x7 << shift);
-	
-	gpio_base[index] = (gpio_base[index] & mask) | (0x1 << shift);
-	
+	for(i = 24 ; i < 26 ; i++){
+		const u32 motor = i;
+		const u32 index = motor/10;
+		const u32 shift = (motor%10)*3;
+		const u32 mask = ~(0x7 << shift);
+		gpio_base[index] = (gpio_base[index] & mask) | (0x1 << shift);
+	}
 
 	return 0;
 }
