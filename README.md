@@ -3,6 +3,10 @@
 # 概要
 ##  モーターを制御するデバイスドライバです  
 ---
+## 動作確認済み環境
+- Raspberry pi 3b+
+- ubuntu server 20.04 LTS
+---
 ## 使用するもの
 - [Raspberry Pi 3 ModelB+](https://www.raspberrypi.org/products/raspberry-pi-3-model-b-plus/)
 - Raspberry pi用電源
@@ -66,7 +70,33 @@ $ sudo rmmod motor
 - モバイルバッテリー
 ---
 ## 作者の制作過程
-
+<img src="https://user-images.githubusercontent.com/53966307/103336114-75766d00-4aba-11eb-90ab-a480ed0d2c67.jpg" width="640px">
+<img src="https://user-images.githubusercontent.com/53966307/103336131-7e673e80-4aba-11eb-8638-995965d89c9e.jpg" width="640px">
+<img src="https://user-images.githubusercontent.com/53966307/103336216-b9697200-4aba-11eb-84f5-46e3c0fc3d89.jpg" width="640px">
+<img src="https://user-images.githubusercontent.com/53966307/103336209-afe00a00-4aba-11eb-8559-bb4fa8082f96.jpg" width="640px">
+<img src="https://user-images.githubusercontent.com/53966307/103336176-9b037680-4aba-11eb-9be1-219d73907503.jpg" width="640px">
+---
+## 実行
+### 少し前に進む  
+```sh
+$ echo f > /dev/motor0  
+```
+---
+### 少し後ろに戻る  
+```sh
+$ echo r > /dev/motor0  
+```
+---
+### 大きく前に進む  
+```sh
+$ echo F > /dev/motor0  
+```
+---
+## 実行
+### 大きく後ろに戻る  
+```sh
+$ echo R > /dev/motor0  
+```
 ---
 ## 動画
 
