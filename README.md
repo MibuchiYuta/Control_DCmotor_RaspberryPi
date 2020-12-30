@@ -33,7 +33,7 @@
 8. 電源ボックスに電池を入れる
 
 #### [TB6643KQデータシート](https://toshiba.semicon-storage.com/jp/semiconductor/product/motor-driver-ics/brushed-dc-motor-driver-ics/detail.TB6643KQ.html)
-- TB6643kqのデータシートをよく読んでから使用してください
+- TB6643KQのデータシートをよく読んでから使用してください
 - モータに過剰な負荷をかける設置の仕方はしないでください
 ---
 ## 使用方法  
@@ -46,6 +46,7 @@ $ sudo chmod 666 /dev/motor0
 ```
 ---
 ## 実行
+※ ページ下に動作時の動画があります
 ### 正回転させる  
 ```sh
 $ echo + > /dev/motor0  
@@ -57,9 +58,10 @@ $ echo + > /dev/motor0
 $ echo - > /dev/motor0
 ```
 ---
-### デバイスドライバのアンインストール方法
+### カーネルモジュールのアンインストール方法
 ```sh
 $ sudo rmmod motor
+$ make clean
   ```   
 ---
 # 応用
