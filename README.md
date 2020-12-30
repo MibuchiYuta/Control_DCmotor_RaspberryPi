@@ -1,81 +1,60 @@
 # robosys_device_drivers
-
 ---
-  
-# 使用方法
-###  モーターを制御するデバイスドライバです  
-  
+# 概要
+##  モーターを制御するデバイスドライバです  
 ---
-  
 ## 使用するもの
-  
-・Raspberry Pi 3 ModelB+  
-・ブレッドボード  
-・ジャンパー線 オス−メス *6  
-  
+- Raspberry Pi 3 ModelB+
+- Raspberry pi用電源
+- ブレッドボード  
+- ジャンパー線 オス−メス *6  
+- ケーブル付き DC Motor (130)
+- 10μF 電解コンデンサ
+- tb6643KQ (モータドライバ)
+- 単3電池
+- 8P 直列電池ボックス
 ---
-  
 ## 回路
-  
-  
+#### 写真のように接続してください
+#### TB6643KQデータシート
 ---
-  
-## ビルド
-  
-実行する場合、以下のように行ってください。  
+## 使用方法  
 ```sh
-$ git clone https://github.com/mibuchiyuta/robosys_device＿driber 
-$ cd robosys/device_driber
+$ git clone https://github.com/MibuchiYuta/Control_DCmotor_RaspberryPi/
+$ cd Control_DCmotor_RaspberryPi
 $ make  
 $ sudo insmod motor.ko  
 $ sudo chmod 666 /dev/motor0  
 ```
-  
 ---
-  
-## 実行方法  
+## 実行
 ### 正回転させる  
-  
 ```sh
-$ echo 1 > /dev/motor0  
+$ echo + > /dev/motor0  
 ```
 ---
-
 ### 逆回転させる
 
 ```sh
-$ echo a > /dev/motor0
+$ echo = > /dev/motor0
 ```
 ---
-
-### デバイスドライバのアンインストール
-
+### デバイスドライバのアンインストール方法
 ```sh
 $ sudo rmmod motor
-  ```
-  
-## 動画  
-  
+  ```   
 ---
-
-## 応用方法
+## 応用
 ###  車のおもちゃを操作する
 ---
-
 ## 追加で使用するもの
-
-- 車のおもちゃ
+- ミニ四駆
 - モバイルバッテリー
-
 ---
-
 ## 作者の制作過程
-
 ---
-
 ## 動画
-
 ---
   
 ### ライセンス
-[GNU General Public License v3.0](https://github.com/Dansato1203/Robosys2020_devicedriver/blob/master/COPYING)
+[GNU General Public License v3.0](https://github.com/MibuchiYuta/Control_DCmotor_RaspberryPi/blob/master/COPYING)
