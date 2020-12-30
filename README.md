@@ -18,7 +18,16 @@
 ---
 ## 回路
 #### 写真
-![IMG_1593](https://user-images.githubusercontent.com/53966307/103334790-1282d700-4ab6-11eb-93f8-5c4911ae5642.jpg)
+![回路写真](https://user-images.githubusercontent.com/53966307/103334790-1282d700-4ab6-11eb-93f8-5c4911ae5642.jpg)
+1. TB6643KQの1番ピンとGPIO24を繋ぐ
+2. TB6643KQの2番ピンとGPIO25を繋ぐ
+3. TB6643KQの4番ピンとGPIO GNDを繋ぐ
+4. TB6643KQの3,5番ピンとモータの端子２つを繋ぐ
+5. 3 で繋いだGNDと電池ボックスの-端子を繋ぐ
+6. 電池ボックスの+端子と-端子の間に電解コンデンサを繋ぐ
+7. TB6643KQの7番ピンと電池ボックスの+端子を繋ぐ
+8. 電源ボックスに電池を入れる
+
 #### [TB6643KQデータシート](https://toshiba.semicon-storage.com/jp/semiconductor/product/motor-driver-ics/brushed-dc-motor-driver-ics/detail.TB6643KQ.html)
 - TB6643kqのデータシートをよく読んでから使用してください
 - モータに過剰な負荷をかける設置の仕方はしないでください
