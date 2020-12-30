@@ -1,4 +1,4 @@
-# robosys_device_drivers
+# Control_DCmotor_RaspberryPi
 ---
 # 概要
 ##  モーターを制御するデバイスドライバです  
@@ -16,6 +16,7 @@
 ---
 ## 回路
 #### 写真のように接続してください
+![IMG_1593](https://user-images.githubusercontent.com/53966307/103334790-1282d700-4ab6-11eb-93f8-5c4911ae5642.jpg)
 #### TB6643KQデータシート
 ---
 ## 使用方法  
