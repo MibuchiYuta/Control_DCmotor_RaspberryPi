@@ -1,3 +1,6 @@
+//SPDX-License-Identifer: GPL-3.0
+// *Copyright (c) 2020 Yuta Mibuchi. All rights reserved.
+
 #include <linux/module.h>
 #include <linux/fs.h>
 #include <linux/cdev.h>
@@ -6,8 +9,8 @@
 #include <linux/io.h>
 #include <linux/delay.h>
 
-MODULE_AUTHOR("Mibuchi Yuta and Ryuichi Ueda");
-MODULE_DESCRIPTION("driver for motor control");
+MODULE_AUTHOR(" Yuta Mibuchi and Ryuichi Ueda ");
+MODULE_DESCRIPTION(" driver for motor control ");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("0.0.1");
 
