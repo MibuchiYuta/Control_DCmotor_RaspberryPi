@@ -116,7 +116,10 @@ static int __init init_mod(void)
 	}
 	device_create(cls, NULL, dev, NULL, "motor%d",MINOR(dev));
 
-	gpio_base = ioremap_nocache(0x3f200000, 0xA0);
+	gpio_base = ioremap_nocache(0x3f200000, 0xA0);  //for Raspberry pi 2 and 3
+	
+	//gpio_base = ioremap_nocache(0xfe200000, 0xA0); //for Raspberry pi 4
+	
 	for(i = 24 ; i < 26 ; i++){
 		const u32 motor = i;
 		const u32 index = motor/10;
