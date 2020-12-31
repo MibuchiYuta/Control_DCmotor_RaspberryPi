@@ -1,7 +1,7 @@
 # Control_DCmotor_RaspberryPi
 ---
 # 概要
-##  モーターを制御するデバイスドライバです  
+##  千葉工業大学の[講義](https://youtu.be/xQW8-FNuboo)内で作成した[デバイスドライバ](https://github.com/ryuichiueda/robosys_device_drivers)を元に作成した,モーターを制御するデバイスドライバです  
 ---
 ## 動作確認済み環境
 - Raspberry pi 3b+
