@@ -1,1 +1,0 @@
-cmd_/home/ubuntu/Control_DCmotor_RaspberryPi/motor.ko := ld -r  -EL  -maarch64elf  --build-id  -T ./scripts/module-common.lds -T ./arch/arm64/kernel/module.lds -o /home/ubuntu/Control_DCmotor_RaspberryPi/motor.ko /home/ubuntu/Control_DCmotor_RaspberryPi/motor.o /home/ubuntu/Control_DCmotor_RaspberryPi/motor.mod.o;  true
