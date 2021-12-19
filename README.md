@@ -37,30 +37,40 @@
 ---
 ## 使用方法  
 ```sh
-$ git clone https://github.com/MibuchiYuta/Control_DCmotor_RaspberryPi/
-$ cd Control_DCmotor_RaspberryPi
-$ make  
-$ sudo insmod motor.ko  
-$ sudo chmod 666 /dev/motor0  
+git clone https://github.com/MibuchiYuta/Control_DCmotor_RaspberryPi/
+```
+```bash
+cd Control_DCmotor_RaspberryPi
+```
+```bash
+make 
+```
+```bash
+sudo insmod motor.ko  
+```
+```bash
+sudo chmod 666 /dev/motor0  
 ```
 ---
 ## 実行
 ※ ページ下に動作時の動画があります
 ### 正回転させる  
 ```sh
-$ echo + > /dev/motor0  
+echo + > /dev/motor0  
 ```
 ---
 ### 逆回転させる
 
 ```sh
-$ echo - > /dev/motor0
+echo - > /dev/motor0
 ```
 ---
 ### カーネルモジュールのアンインストール方法
 ```sh
-$ sudo rmmod motor
-$ make clean
+sudo rmmod motor
+```
+```bash
+make clean
   ```   
 ---
 # 応用
@@ -80,23 +90,23 @@ $ make clean
 ## 実行
 ### 少し前に進む  
 ```sh
-$ echo f > /dev/motor0  
+echo f > /dev/motor0  
 ```
 ---
 ### 少し後ろに戻る  
 ```sh
-$ echo r > /dev/motor0  
+echo r > /dev/motor0  
 ```
 ---
 ### 大きく前に進む  
 ```sh
-$ echo F > /dev/motor0  
+echo F > /dev/motor0  
 ```
 ---
 ## 実行
 ### 大きく後ろに戻る  
 ```sh
-$ echo R > /dev/motor0  
+echo R > /dev/motor0  
 ```
 ---
 ## 動画
